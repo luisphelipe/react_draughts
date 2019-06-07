@@ -1,27 +1,55 @@
+html,
+body,
+#app {
+  height: 100vh;
+  background-color: #111111;
+  margin: 0px;
+  padding: 0px;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-container {
+  height: 95vh;
+  margin-bottom: 5vh;
+}
+
 .board {
-  /* size of the board */
+  margin: 4px #666;
+}
+
+.board-row {
+  display: flex;
 }
 
 .board-cell {
-  /* size of the cell */
+  width: 64px;
+  height: 64px;
 }
 
 .board-cell-light {
-  background-color: #999;
+  background-color: #AAA;
 }
 
 .board-cell-dark {
   background-color: #666;
 }
 
-.piece {
-  /* size and roundness of piece */
+.board-piece {
+  width: 48px;
+  height: 48px;
+  margin: 8px 8px;
+  border-radius: 50%;
 }
 
-.piece-white {
+.board-piece-white {
   background-color: white;
 }
 
-.piece-black {
+.board-piece-black {
   background-color: black;
 }
