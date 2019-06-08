@@ -1,31 +1,62 @@
 import React from 'react';
 
-import isDarkCell from '../misc/Utils'
+import { isFillable } from '../misc/Utils'
 
 function Piece(props) {
   return (
-    <div className={`board-piece board-piece-${ props.player ? 'black' : 'white' }`}>
+    <div className={
+      `
+        board-piece 
+        ${ 
+          props.possibleMove 
+          ? 'board-piece-possible'
+          : `board-piece-${ props.selected ? 'selected' : props.player ? 'black' : 'white' }`
+        }
+      `
+      }>
     </div>
   ) 
 }
 
 function Cell(props) {
   return (
-    <div className={`board-cell board-cell-${ props.isDark ? 'dark' : 'light' }`}>
+    <div 
+      className={`board-cell board-cell-${ props.isFillable ? 'dark' : 'light' }`}
+      onClick={() => ( props.handleClick() )} 
+      >
       { 
         props.cell !== null && 
-          <Piece player={props.cell}/>
+          <Piece 
+            player={props.cell}
+            selected={props.selected}
+            />
       }
+
+      { 
+        props.possibleMove && 
+          <Piece 
+            possibleMove={true}
+            />
+      }
+
     </div>
   ) 
 }
+
 
 function Row(props) {
   return (
     <div className="board-row">
       {
         props.row.map((col, idx) => (
-          <Cell isDark={isDarkCell(props.idx, idx)} cell={col} key={idx}/>
+          <Cell 
+            cell={col} 
+            key={idx} 
+            selected={String([props.idx, idx]) === props.selectedPiece}
+            possibleMove={props.possibleMoves.includes(String([props.idx, idx]))}
+            isFillable={!isFillable(props.idx, idx)} // NOT, since display is reversed
+            handleClick={() => ( props.handleClick(idx) )}
+            />
         ))
       }
     </div>
@@ -37,7 +68,14 @@ function Board(props) {
     <div className="board">
       {
         props.board.map((row, idx) => (
-          <Row row={row} key={idx} idx={idx} />
+          <Row 
+            row={row} 
+            key={idx} 
+            idx={idx} 
+            selectedPiece={props.selectedPiece} 
+            possibleMoves={props.possibleMoves} 
+            handleClick={(col) => ( props.handleClick(idx, col) )}
+            />
         ))
       }
     </div>

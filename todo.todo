@@ -1,0 +1,20 @@
+[X] board state
+[X] board display
+[X] select piece
+[X] show possible moves
+[X] move piece
+[X] invert board 
+[X] eat piece (1)
+
+[ ] improve eating pieces algorithm
+[ ] eat piece (2+)
+
+[ ] refactor code
+
+[ ] option to play with fixed board (will be used in multiplayer)
+[ ] simple main menu (singleplayer, multiplayer, against IA (just a teasing))
+[ ] multiplayer option 
+
+[ ] piece become king 
+[ ] king move backwards
+[ ] king can eat far pieces

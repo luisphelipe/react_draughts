@@ -46,6 +46,14 @@ body,
   border-radius: 50%;
 }
 
+.board-piece-selected {
+  background-color: #FD626A;
+}
+
+.board-piece-possible {
+  background-color: #FD626A50;
+}
+
 .board-piece-white {
   background-color: white;
 }
